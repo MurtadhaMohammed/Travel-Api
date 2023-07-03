@@ -1,9 +1,11 @@
 const express = require("express");
+var cors = require('cors')
 const app = express();
 const port = 3000;
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+app.use(cors())
 app.use(express.json());
 
 //Trips Routes =======================================

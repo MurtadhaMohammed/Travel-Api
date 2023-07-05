@@ -68,14 +68,12 @@ app.delete("/api/trips/:id", async (req, res) => {
 app.get("/api/bookings", async (req, res) => {
   let resp = {};
   try {
-    const bookings = await prisma.booking.findMany(
-      { include: { trip: true } },
-      {
-        orderBy: {
-          createdAt: "desc",
-        },
-      }
-    );
+    const bookings = await prisma.booking.findMany({
+      include: { trip: true },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     resp = { records: bookings, success: true };
   } catch (error) {
     resp = { err: error.message, success: false };

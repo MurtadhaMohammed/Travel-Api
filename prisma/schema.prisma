@@ -20,6 +20,7 @@ model Trip {
   date  String
   days  Int
   bookings Booking[]
+  createdAt      DateTime         @default(now())
 }
 
 model Booking {
@@ -30,4 +31,5 @@ model Booking {
   status  String
   trip    Trip   @relation(fields: [tripId], references: [id])
   tripId  Int
+  createdAt      DateTime         @default(now())
 }

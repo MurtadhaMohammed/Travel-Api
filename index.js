@@ -1,18 +1,22 @@
 const express = require("express");
-var cors = require('cors')
+var cors = require("cors");
 const app = express();
 const port = 3000;
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 
 //Trips Routes =======================================
 app.get("/api/trips", async (req, res) => {
   let resp = {};
   try {
-    const trips = await prisma.trip.findMany({});
+    const trips = await prisma.trip.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     resp = { records: trips, success: true };
   } catch (error) {
     resp = { err: error.message, success: false };
@@ -64,7 +68,14 @@ app.delete("/api/trips/:id", async (req, res) => {
 app.get("/api/bookings", async (req, res) => {
   let resp = {};
   try {
-    const bookings = await prisma.booking.findMany({ include: { trip: true } });
+    const bookings = await prisma.booking.findMany(
+      { include: { trip: true } },
+      {
+        orderBy: {
+          createdAt: "desc",
+        },
+      }
+    );
     resp = { records: bookings, success: true };
   } catch (error) {
     resp = { err: error.message, success: false };

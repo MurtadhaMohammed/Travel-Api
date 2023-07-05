@@ -16,11 +16,11 @@ model Trip {
   content  String?
   price  Int
   img  String?
+  createdAt   DateTime     @default(now())
   place  String
   date  String
   days  Int
   bookings Booking[]
-  createdAt      DateTime         @default(now())
 }
 
 model Booking {

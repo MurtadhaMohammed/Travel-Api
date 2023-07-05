@@ -16,7 +16,7 @@ model Trip {
   content  String?
   price  Int
   img  String?
-  createdAt   DateTime     @default(now())
+  createdAt  DateTime   @default(now())
   place  String
   date  String
   days  Int
@@ -31,5 +31,5 @@ model Booking {
   status  String
   trip    Trip   @relation(fields: [tripId], references: [id])
   tripId  Int
-  createdAt      DateTime         @default(now())
+  createdAt   DateTime    @default(now())
 }

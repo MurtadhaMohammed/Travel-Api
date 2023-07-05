@@ -71,7 +71,7 @@ app.get("/api/bookings", async (req, res) => {
     const bookings = await prisma.booking.findMany({
       include: { trip: true },
       orderBy: {
-        createdAt: "desc",
+        id: "desc",
       },
     });
     resp = { records: bookings, success: true };

@@ -12,9 +12,9 @@ app.use(express.json());
 app.get("/api/trips", async (req, res) => {
   let resp = {};
   try {
-    const trips = await prisma.trip.findMany({},{
+    const trips = await prisma.trip.findMany({
       orderBy: {
-        createdAt: "desc",
+        id: "desc",
       },
     });
     resp = { records: trips, success: true };

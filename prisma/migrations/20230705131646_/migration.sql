@@ -5,6 +5,7 @@ CREATE TABLE "Trip" (
     "content" TEXT,
     "price" INTEGER NOT NULL,
     "img" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "place" TEXT NOT NULL,
     "date" TEXT NOT NULL,
     "days" INTEGER NOT NULL,
@@ -20,6 +21,7 @@ CREATE TABLE "Booking" (
     "customerAddress" TEXT NOT NULL,
     "status" TEXT NOT NULL,
     "tripId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Booking_pkey" PRIMARY KEY ("id")
 );
